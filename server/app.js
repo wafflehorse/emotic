@@ -9,7 +9,12 @@ var db = require("./db");
 var index = require("./routes/index");
 var users = require("./routes/users");
 
-var MONGO_URL = "mongodb://wafflehorse:workplz8@ds239940.mlab.com:39940/master_db"
+var MONGO_URL = 'mongodb://localhost:27017/mapo_db';
+
+console.log(process.env.NODE_ENV);
+if(process.env.NODE_ENV == 'production') {
+  MONGO_URL = `mongodb://${process.env.MAPO_DB_USER}:${process.env.MAPO_DB_KEY}@ds239940.mlab.com:39940/master_db`
+}
 
 var app = express();
 
@@ -47,15 +52,6 @@ app.use(function(err, req, res, next) {
 });
 
 //Connect to Mongo on start
-db.connect(MONGO_URL, function(err) {
-  if (err) {
-    console.log("Unable to connect to Mongo.");
-    process.exit(1);
-  } else {
-    app.listen(3001, function() {
-      console.log("Listening on port 3001...");
-    });
-  }
-});
+db.connect(MONGO_URL);
 
 module.exports = app;
