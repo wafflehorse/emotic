@@ -5,6 +5,7 @@
     "server": "node start_server.js"
   },
   "dependencies": {
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "express": "^4.16.3"
   }
 }
