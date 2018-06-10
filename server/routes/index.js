@@ -2,7 +2,8 @@ var express = require("express");
 var router = express.Router();
 
 /* GET home page. */
-router.get("/api/yoyo", function(req, res, next) {
+router.get("/yoyo", function(req, res, next) {
+  console.log('api call to yoyo')
   res.send({ text: "Yo Yo whatup!" });
 });
 
