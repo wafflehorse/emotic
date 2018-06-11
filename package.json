@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "node start_client.js",
-    "server": "node start_server.js"
+    "server": "node start_server.js",
+    "start": "node start_server.js",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "dependencies": {
     "concurrently": "^3.5.1",
